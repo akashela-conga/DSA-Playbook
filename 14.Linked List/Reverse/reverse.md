@@ -77,26 +77,6 @@ ListNode getKthNode(ListNode head,int k){
 
 Steps
 
-```text
-dummy
-
-↓
-
-leftPrev
-
-↓
-
-leftNode
-
-↓
-
-rightNode
-
-↓
-
-next
-```
-
 ```java
 // Save remaining list
 ListNode next = rightNode.next;
@@ -120,34 +100,6 @@ leftNode.next = next;
 # Reverse K Group (LC 25)
 
 Algorithm
-
-```text
-Find kth node
-
-↓
-
-Enough nodes?
-
-↓
-
-Save next group
-
-↓
-
-Cut
-
-↓
-
-Reverse
-
-↓
-
-Reconnect
-
-↓
-
-Repeat
-```
 
 ```java
 // Find kth node
