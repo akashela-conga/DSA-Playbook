@@ -207,3 +207,60 @@ Therefore, in interviews, it is acceptable to say:
 * Nodes with the same leader belong to the same connected component.
 * Always call `find()` before performing a union.
 * Path Compression makes future `find()` operations nearly constant time.
+
+---
+
+# Problem-Specific Core Logic
+
+## 1. Number of Provinces (LC 547)
+
+### Core Logic
+
+* Treat every city as an individual component.
+* Traverse only the lower (or upper) triangle of the adjacency matrix.
+* If two cities are directly connected, merge their components.
+* Count how many nodes remain as leaders (`parent[i] == i`).
+
+**Complexity**
+
+* Time: `O(N² · α(N)) ≈ O(N²)`
+* Space: `O(N)`
+
+---
+
+## 2. Number of Operations to Make Network Connected (LC 1319)
+
+### Core Logic
+
+* Initially, every computer is its own component.
+* For every cable:
+
+  * Different leaders → merge components.
+  * Same leader → this cable is an extra (redundant) edge.
+* Let:
+
+  * `components` = number of connected components.
+  * `extraEdges` = redundant cables.
+* Need `components - 1` cables to connect all components.
+* If `extraEdges < components - 1`, return `-1`; otherwise return `components - 1`.
+
+**Complexity**
+
+* Time: `O(E · α(N))`
+* Space: `O(N)`
+
+---
+
+## 3. Lexicographically Smallest Equivalent String (LC 1061)
+
+### Core Logic
+
+* Each character (`a`–`z`) is a node.
+* Merge equivalent characters.
+* Always make the **lexicographically smaller** character the parent.
+* For every character in `baseStr`, replace it with its component leader.
+
+**Complexity**
+
+* Time: `O((|s1| + |baseStr|) · α(26)) ≈ O(|s1| + |baseStr|)`
+* Space: `O(26) ≈ O(1)`
